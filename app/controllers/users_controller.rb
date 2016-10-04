@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(params[:user].permit(:name, :email))
+    user = User.new(user_params[:user])
     if user.save
       render json: user
     else
@@ -24,8 +24,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
-    user.update(params[:user].permit(:name, :email))
+    user = User.find(user_params[:id])
+    user.update(user_params[:user])
     if user.save
       render json: user
     else
@@ -36,10 +36,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.delete(params[:id])
+    user = User.delete(user_params[:id])
     render text: "it was deleted"
   end
 
   private
 
+
+  def user_params
+     params.require(:user).permit(:username)
+   end
 end

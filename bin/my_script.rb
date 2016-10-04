@@ -29,7 +29,7 @@ def show_user(id)
     end
 end
 
-# show_user(2)
+show_user(2)
 
 def create_user(name,email)
   begin
@@ -85,4 +85,4 @@ def delete_user(id)
 end
 
 # delete_user(2)
-index_users
+# index_users

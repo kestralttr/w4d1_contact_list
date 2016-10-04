@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   patch 'users/:id' => 'users#update'
   put 'users/:id' => 'users#update'
   delete 'users/:id' => 'users#destroy'
+
+  resources :contacts, only: [:create, :destroy, :show, :update, :index]
+  resources :contact_shares, only: [:create, :destroy, :show, :update, :index]
+
 end
